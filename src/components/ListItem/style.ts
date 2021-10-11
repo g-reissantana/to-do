@@ -10,8 +10,10 @@ export const Container = styled.div(({check}: ContainerProps) => (
     align-items: center;
 
     background-color: #20212C;
-    padding: 13px;
+    padding: 17px;
     margin-bottom: 10px;
+
+    border-radius: 15px;
 
     input {
         width: 22px;

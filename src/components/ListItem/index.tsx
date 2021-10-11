@@ -1,24 +1,22 @@
 import * as C from './style'
 import { Item } from '../../types/item'
-import { useState } from 'react'
+import { useState, MouseEvent } from 'react'
 
 type Props = {
-    item: Item
+    item: Item,
+    onChange: (id: number, done: boolean) => void
 }
 
-export const ListItem = ({item}:Props) => {
-
-    const [isChecked, setIsChecked] = useState(item.check)
-
+export const ListItem = ({item, onChange}:Props) => {
     return(
-        <C.Container check={isChecked}>
+        <C.Container check={item.check}>
             <input 
                 type="checkbox" 
                 id={`${item.id}`}
-                checked = {isChecked}
-                onChange = {(e) => {setIsChecked(e.target.checked)}}
+                checked = {item.check}
+                onChange={e => onChange(item.id, e.target.checked)}
             />  
-            <label htmlFor={`${item.id}`}>{item.name}</label>
+            <label htmlFor={`${item.id}`}>{item.name} - {item.check.toString()}</label>
         </C.Container>
     )
 }

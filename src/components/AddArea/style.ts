@@ -1,33 +1,34 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    margin: 20px 0;
+    background-color: #fff;
+
+    padding: 13px;
+    border-radius: 15px;
 
     display: flex;
     align-items: center;
 
-    border: 2px solid #555;
-    border-radius: 15px;
-
-    padding: 12px;
+    margin-bottom: 15px;
 
     .icon-plus {
-        width: 26px;
-        height: 26px;
+        width: 27px;
+        height: 27px;
 
+        color: #17171F;
         cursor: pointer;
-        margin-right: 10px;
-
-        color: #fff;
+        margin-right: 8px;
     }
 
     input {
-        flex: 1;        
         border: 0;
         outline: 0;
+        flex: 1;
 
+        color: #17171F;
         font-size: 18px;
-        color: #ffffff;
-        background-color: transparent;
+        font-weight: 500;
     }
+
+
 `

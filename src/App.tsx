@@ -8,37 +8,38 @@ import { Item } from './types/item';
 const App = () => {
 
     const [list, setList] = useState<Item[]>([
+        {id: 1, name: 'Comprar pão na padaria', check: false}
     ])
 
-    const addNewTask = (taskName:String) => {
+    const handleList = (taskName:String) => {
         let newList = [...list]
         newList.push({
-            id:list.length+1,
-            name:`${taskName}`,
+            id: list.length+1,
+            name: `${taskName}`,
             check: false
         })
         setList(newList)
     }
-
-    const Lista = () => {
-        if(list.length == 0) {
-            return (
-                <h1 style={{textAlign: 'center', marginTop: '90px'}}>Você ainda não tem tarefas criadas</h1>
-            )
+    
+    const handleTaskChange = (id: number, check: boolean) => {
+        let newList = [...list];
+        for(let i in newList) {
+          if(newList[i].id === id) {
+            newList[i].check = check;
+          }
         }
-    }
+        setList(newList);
+      }
 
     return(
         <C.Containter>
             <C.Area>
                 <C.Header>Lista de Tarefas</C.Header>
 
-                <AddArea onEnter={addNewTask}/>
-
-                {Lista()}
+                <AddArea onEnter = {handleList}/>    
 
                 {list.map((item, index) => (
-                    <ListItem key={index} item={item}/>
+                    <ListItem key={index} item={item} onChange={handleTaskChange}/>
                 ))}
 
             </C.Area>

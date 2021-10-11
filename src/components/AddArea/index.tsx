@@ -1,39 +1,32 @@
-import { KeyboardEvent, useState, MouseEvent } from 'react'
 import * as C from './style'
-import { AiOutlinePlusCircle } from "react-icons/ai";
+import { AiOutlinePlus } from 'react-icons/ai'
+import { useState, KeyboardEvent } from 'react'
 
 type Props = {
-    onEnter: (taskName: string) => void
+    onEnter: (taskName:String) => void
 }
 
-export const AddArea = ({ onEnter }: Props) => {
-    const [inputText, setInputText] = useState('');
+export const AddArea = ({onEnter}:Props) => {
 
-    const handleKeyUp = (e: KeyboardEvent) => {
-        if(e.code === 'Enter' && inputText !== '') {
-            onEnter(inputText);
-            setInputText('')
-        }
-    }
+    const [inputText, setInputText] = useState('')
 
-    const handleClickTask = (e:MouseEvent) => {
-        if(inputText !== '') {
-            onEnter(inputText);
+    const handleNewTask = (e:KeyboardEvent) => {
+        let key = e.code
+        if(key === 'Enter' && inputText !== '') {
+            onEnter(inputText)
             setInputText('')
-        } else {
-            alert('O campo de tarefa não pode ser vazio')
         }
     }
 
     return(
         <C.Container>
-            <AiOutlinePlusCircle onClick={e => handleClickTask(e)} className="icon-plus"/>
-            <input
-                value={inputText}
+            <AiOutlinePlus className="icon-plus"/>
+            <input 
+                value = {inputText}
                 type = "text" 
-                placeholder = "Adicionar uma tarefa"
-                onChange = { e => setInputText(e.target.value)}
-                onKeyUp = { e => handleKeyUp(e) }
+                placeholder = "Adicionar nova tarefa"
+                onChange = { e => setInputText(e.target.value) }
+                onKeyUp = { e => handleNewTask(e) }
             />
         </C.Container>
     )
