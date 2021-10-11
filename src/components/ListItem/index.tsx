@@ -1,6 +1,5 @@
 import * as C from './style'
 import { Item } from '../../types/item'
-import { useState, MouseEvent } from 'react'
 
 type Props = {
     item: Item,
